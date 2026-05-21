@@ -1,0 +1,60 @@
+.upcoming-event-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 480px;
+}
+
+.event-card-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card-date {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-brand-blue, #006fcf);
+  margin-bottom: 4px;
+}
+
+.event-card-time {
+  font-size: 0.8125rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.event-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+  line-height: 1.4;
+}
+
+.event-card-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.event-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-brand-blue, #006fcf);
+  color: var(--color-brand-blue, #006fcf);
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.event-card-action:hover {
+  background: var(--color-brand-blue, #006fcf);
+  color: #fff;
+}

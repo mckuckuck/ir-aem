@@ -1,0 +1,141 @@
+.events-calendar {
+  padding: 1.5rem 0;
+}
+
+.ec-inner {
+  width: 100%;
+}
+
+.ec-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.ec-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.ec-tab {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.ec-tab:hover {
+  color: #006fcf;
+}
+
+.ec-tab-active {
+  color: #006fcf;
+  border-bottom-color: #006fcf;
+}
+
+.ec-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.ec-filter-select {
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23333' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background-size: 10px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.ec-events {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ec-event-card {
+  padding: 1.25rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: box-shadow 0.2s;
+}
+
+.ec-event-card:hover {
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+}
+
+.ec-event-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #006fcf;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.ec-event-time {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.ec-event-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.ec-event-type {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  background: #f0f0f0;
+  border-radius: 3px;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.ec-event-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.ec-event-action {
+  font-size: 0.875rem;
+  color: #006fcf;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ec-event-action:hover {
+  text-decoration: underline;
+}
+
+.ec-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-style: italic;
+}
+
+@media (width <= 768px) {
+  .ec-tabs {
+    overflow-x: auto;
+  }
+
+  .ec-filters {
+    flex-direction: column;
+  }
+}

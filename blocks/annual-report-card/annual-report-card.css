@@ -1,0 +1,87 @@
+.annual-report-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 480px;
+}
+
+.annual-report-inner {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.annual-report-thumbnail {
+  flex-shrink: 0;
+  width: 120px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.annual-report-thumbnail picture,
+.annual-report-thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.annual-report-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.annual-report-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.annual-report-year {
+  font-size: 0.8125rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.annual-report-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.annual-report-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-brand-blue, #006fcf);
+  color: var(--color-brand-blue, #006fcf);
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.annual-report-action:hover {
+  background: var(--color-brand-blue, #006fcf);
+  color: #fff;
+}
+
+@media (width < 600px) {
+  .annual-report-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .annual-report-actions {
+    justify-content: center;
+  }
+}

@@ -83,6 +83,66 @@
       "id": "blocks",
       "components": [
         {
+          "title": "Abs Section",
+          "id": "abs-section",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Abs Section",
+                  "model": "abs-section"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Annual Report Card",
+          "id": "annual-report-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Annual Report Card",
+                  "model": "annual-report-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Annual Reports Gallery",
+          "id": "annual-reports-gallery",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Annual Reports Gallery",
+                  "filter": "annual-reports-gallery"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Annual Report Entry",
+          "id": "annual-report-entry",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Annual Report Entry",
+                  "model": "annual-report-entry"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards",
           "id": "cards",
           "plugins": {
@@ -128,6 +188,141 @@
           }
         },
         {
+          "title": "Commercial Paper",
+          "id": "commercial-paper",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Commercial Paper",
+                  "model": "commercial-paper"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Document List",
+          "id": "document-list",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Document List",
+                  "filter": "document-list"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Document Item",
+          "id": "document-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Document Item",
+                  "model": "document-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Earnings Summary",
+          "id": "earnings-summary",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Earnings Summary",
+                  "model": "earnings-summary"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Email Alerts Form",
+          "id": "email-alerts-form",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Email Alerts Form",
+                  "model": "email-alerts-form"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Events Calendar",
+          "id": "events-calendar",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Events Calendar",
+                  "model": "events-calendar"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Executive Profiles",
+          "id": "executive-profiles",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Executive Profiles",
+                  "filter": "executive-profiles"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Executive Profile",
+          "id": "executive-profile",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Executive Profile",
+                  "model": "executive-profile"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Filterable Data Table",
+          "id": "filterable-data-table",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Filterable Data Table",
+                  "model": "filterable-data-table"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Fragment",
           "id": "fragment",
           "plugins": {
@@ -143,6 +338,21 @@
           }
         },
         {
+          "title": "Funding Overview",
+          "id": "funding-overview",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Funding Overview",
+                  "model": "funding-overview"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
@@ -152,6 +362,171 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Historic Prices",
+          "id": "historic-prices",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Historic Prices",
+                  "model": "historic-prices"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Information Request",
+          "id": "information-request",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Information Request",
+                  "model": "information-request"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Investment Calculator",
+          "id": "investment-calculator",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Investment Calculator",
+                  "model": "investment-calculator"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Investor Alerts",
+          "id": "investor-alerts",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Investor Alerts",
+                  "model": "investor-alerts"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "News List",
+          "id": "news-list",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "News List",
+                  "model": "news-list"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Sec Filings Preview",
+          "id": "sec-filings-preview",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Sec Filings Preview",
+                  "model": "sec-filings-preview"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Stock Chart",
+          "id": "stock-chart",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Stock Chart",
+                  "model": "stock-chart"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Stock Quote",
+          "id": "stock-quote",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Stock Quote",
+                  "model": "stock-quote"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Stock Ticker",
+          "id": "stock-ticker",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Stock Ticker",
+                  "model": "stock-ticker"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Upcoming Event Card",
+          "id": "upcoming-event-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Upcoming Event Card",
+                  "model": "upcoming-event-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Year Selector",
+          "id": "year-selector",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Year Selector",
+                  "model": "year-selector"
                 }
               }
             }

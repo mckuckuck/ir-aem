@@ -19,6 +19,12 @@
     ]
   },
   {
+    "id": "annual-reports-gallery",
+    "components": [
+      "annual-report-entry"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"
@@ -37,6 +43,18 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "document-list",
+    "components": [
+      "document-item"
+    ]
+  },
+  {
+    "id": "executive-profiles",
+    "components": [
+      "executive-profile"
     ]
   }
 ]

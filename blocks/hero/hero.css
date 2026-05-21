@@ -1,3 +1,4 @@
+/* Hero block — shared styles */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,33 +6,206 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 48px 24px;
+  min-height: 200px;
+  background-color: var(--color-brand-blue, #006fcf);
+  overflow: hidden;
+}
+
+.hero .hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero .hero-background picture,
+.hero .hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 16px;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+/* Breadcrumb */
+.hero .hero-breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: flex;
+  gap: 8px;
+  font-size: 0.875rem;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero .hero-breadcrumb li {
+  color: rgb(255 255 255 / 80%);
+}
+
+.hero .hero-breadcrumb li::after {
+  content: "›";
+  margin-left: 8px;
+  color: rgb(255 255 255 / 60%);
+}
+
+.hero .hero-breadcrumb li:last-child::after {
+  content: none;
+}
+
+.hero .hero-breadcrumb a {
+  color: rgb(255 255 255 / 80%);
+  text-decoration: none;
+}
+
+.hero .hero-breadcrumb a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Hero Home variant */
+.hero.home {
+  padding: 48px 24px 56px;
+  min-height: 320px;
+}
+
+.hero.home h1 {
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+}
+
+.hero .hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Event card */
+.hero .hero-event-card {
+  background: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 8px;
+  padding: 24px;
+  color: #fff;
+}
+
+.hero .hero-event-card .event-date {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.hero .hero-event-card .event-time {
+  font-size: 0.8125rem;
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.hero .hero-event-card .event-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.hero .hero-event-card .event-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero .hero-event-card .event-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #fff;
+  color: var(--color-brand-blue, #006fcf);
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.hero .hero-event-card .event-link:hover {
+  background: #f0f0f0;
+}
+
+/* Stock ticker in hero */
+.hero .hero-stock-ticker {
+  background: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 8px;
+  padding: 24px;
+  color: #fff;
+}
+
+.hero .hero-stock-ticker .ticker-symbol {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.hero .hero-stock-ticker .ticker-price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.hero .hero-stock-ticker .ticker-change {
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+}
+
+.hero .hero-stock-ticker .ticker-details {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.8125rem;
+  margin-bottom: 8px;
+}
+
+.hero .hero-stock-ticker .ticker-delay {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 8px;
 }
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 56px 32px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero.home {
+    padding: 64px 32px 72px;
+  }
+
+  .hero.home h1 {
+    font-size: 3rem;
+  }
+
+  .hero .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 }

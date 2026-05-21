@@ -1,0 +1,57 @@
+{
+  "definitions": [
+    {
+      "title": "Earnings Summary",
+      "id": "earnings-summary",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Earnings Summary",
+              "model": "earnings-summary"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "earnings-summary",
+      "fields": [
+        {
+          "component": "text",
+          "name": "quarter",
+          "label": "Quarter Label"
+        },
+        {
+          "component": "aem-content",
+          "name": "pressRelease",
+          "label": "Press Release Link"
+        },
+        {
+          "component": "aem-content",
+          "name": "webcast",
+          "label": "Webcast Link"
+        },
+        {
+          "component": "aem-content",
+          "name": "presentation",
+          "label": "Presentation Link"
+        },
+        {
+          "component": "aem-content",
+          "name": "financialTables",
+          "label": "Financial Tables Link"
+        },
+        {
+          "component": "aem-content",
+          "name": "secFiling",
+          "label": "SEC Filing (10-Q) Link"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

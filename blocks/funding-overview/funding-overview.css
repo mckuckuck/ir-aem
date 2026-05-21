@@ -1,0 +1,38 @@
+.funding-overview {
+  padding: 2rem 0;
+}
+
+.fo-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.fo-content h2,
+.fo-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.fo-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 1rem;
+}
+
+.fo-image picture,
+.fo-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (width <= 768px) {
+  .fo-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

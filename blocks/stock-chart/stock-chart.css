@@ -1,0 +1,97 @@
+.stock-chart {
+  padding: 1.5rem 0;
+}
+
+.stock-chart-inner {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.sc-header {
+  margin-bottom: 1rem;
+}
+
+.sc-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sc-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1rem;
+}
+
+.sc-range-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sc-range-btn:hover {
+  background: #f0f0f0;
+}
+
+.sc-range-active {
+  background: #006fcf;
+  color: #fff;
+  border-color: #006fcf;
+}
+
+.sc-chart-area {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.sc-chart-placeholder {
+  text-align: center;
+  color: #999;
+}
+
+.sc-chart-placeholder p {
+  margin: 0.25rem 0;
+}
+
+.sc-chart-note {
+  font-size: 0.8rem;
+}
+
+.sc-compare {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.sc-compare-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.sc-compare-option {
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}

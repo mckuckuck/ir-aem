@@ -1,0 +1,109 @@
+.sec-filings-preview {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.sec-filings-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.sec-filings-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sec-filings-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.sec-filings-view-all {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-brand-blue, #006fcf);
+  text-decoration: none;
+}
+
+.sec-filings-view-all:hover {
+  text-decoration: underline;
+}
+
+.sec-filings-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sec-filing-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  background: #fafafa;
+  flex-wrap: wrap;
+}
+
+.sec-filing-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #eef6ff;
+  color: var(--color-brand-blue, #006fcf);
+  white-space: nowrap;
+}
+
+.sec-filing-badge-8k {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.sec-filing-badge-10q {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.sec-filing-badge-10k {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.sec-filing-desc {
+  flex: 1;
+  font-size: 0.875rem;
+  color: #333;
+  min-width: 0;
+}
+
+.sec-filing-downloads {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sec-filing-download {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.sec-filing-download:hover {
+  border-color: var(--color-brand-blue, #006fcf);
+  color: var(--color-brand-blue, #006fcf);
+}

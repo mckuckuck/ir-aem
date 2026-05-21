@@ -1,0 +1,72 @@
+.year-selector {
+  padding: 1.5rem 0;
+}
+
+.year-selector-inner {
+  max-width: 800px;
+}
+
+.year-selector-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.year-selector-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.year-selector-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.year-selector-select {
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23333' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background-size: 10px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.year-selector-documents {
+  display: flex;
+  flex-direction: column;
+}
+
+.year-selector-doc-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.year-selector-doc-item:first-child {
+  border-top: 1px solid #e0e0e0;
+}
+
+.year-selector-doc-icon {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  background: url('/icons/pdf.svg') no-repeat center;
+  background-size: contain;
+}
+
+.year-selector-doc-link {
+  color: #006fcf;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.year-selector-doc-link:hover {
+  text-decoration: underline;
+}

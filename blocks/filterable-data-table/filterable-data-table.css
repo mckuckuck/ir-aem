@@ -1,0 +1,97 @@
+.filterable-data-table {
+  padding: 1.5rem 0;
+}
+
+.fdt-inner {
+  width: 100%;
+}
+
+.fdt-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.fdt-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.fdt-filter-select {
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23333' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background-size: 10px;
+  appearance: none;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.fdt-table-container {
+  overflow-x: auto;
+}
+
+.fdt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.fdt-table thead th {
+  background: #f5f5f5;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #ddd;
+  white-space: nowrap;
+}
+
+.fdt-table tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e8e8e8;
+  vertical-align: top;
+}
+
+.fdt-table tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.fdt-download-link {
+  color: #006fcf;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.fdt-download-link:hover {
+  text-decoration: underline;
+}
+
+.fdt-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-style: italic;
+}
+
+@media (width <= 768px) {
+  .fdt-filters {
+    flex-direction: column;
+  }
+
+  .fdt-filter-select {
+    width: 100%;
+  }
+
+  .fdt-table {
+    font-size: 0.8rem;
+  }
+
+  .fdt-table thead th,
+  .fdt-table tbody td {
+    padding: 0.5rem;
+  }
+}

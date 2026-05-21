@@ -1,0 +1,38 @@
+{
+  "definitions": [
+    {
+      "title": "Investment Calculator",
+      "id": "investment-calculator",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Investment Calculator",
+              "model": "investment-calculator"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "investment-calculator",
+      "fields": [
+        {
+          "component": "text",
+          "name": "symbol",
+          "label": "Ticker Symbol",
+          "value": "AXP"
+        },
+        {
+          "component": "aem-content",
+          "name": "source",
+          "label": "Data Source (Optional)"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

@@ -142,6 +142,81 @@
     ]
   },
   {
+    "id": "abs-section",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Section Heading"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "annual-report-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "thumbnail",
+        "label": "Report Cover Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Report Title"
+      },
+      {
+        "component": "text",
+        "name": "year",
+        "label": "Report Year"
+      },
+      {
+        "component": "aem-content",
+        "name": "pdfLink",
+        "label": "PDF Download Link"
+      },
+      {
+        "component": "aem-content",
+        "name": "htmlLink",
+        "label": "HTML View Link"
+      }
+    ]
+  },
+  {
+    "id": "annual-report-entry",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Report Cover Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "year",
+        "label": "Report Year"
+      },
+      {
+        "component": "aem-content",
+        "name": "pdfLink",
+        "label": "PDF Download Link"
+      },
+      {
+        "component": "aem-content",
+        "name": "htmlLink",
+        "label": "HTML View Link"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -180,12 +255,191 @@
     ]
   },
   {
+    "id": "commercial-paper",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "document-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Document Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Document Title"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "earnings-summary",
+    "fields": [
+      {
+        "component": "text",
+        "name": "quarter",
+        "label": "Quarter Label"
+      },
+      {
+        "component": "aem-content",
+        "name": "pressRelease",
+        "label": "Press Release Link"
+      },
+      {
+        "component": "aem-content",
+        "name": "webcast",
+        "label": "Webcast Link"
+      },
+      {
+        "component": "aem-content",
+        "name": "presentation",
+        "label": "Presentation Link"
+      },
+      {
+        "component": "aem-content",
+        "name": "financialTables",
+        "label": "Financial Tables Link"
+      },
+      {
+        "component": "aem-content",
+        "name": "secFiling",
+        "label": "SEC Filing (10-Q) Link"
+      }
+    ]
+  },
+  {
+    "id": "email-alerts-form",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "value": "Email Alerts"
+      }
+    ]
+  },
+  {
+    "id": "events-calendar",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "value": "Events"
+      },
+      {
+        "component": "aem-content",
+        "name": "source",
+        "label": "Data Source (Events Sheet URL)"
+      }
+    ]
+  },
+  {
+    "id": "executive-profile",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Photo",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "name",
+        "label": "Name"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "bio",
+        "label": "Biography",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "filterable-data-table",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading"
+      },
+      {
+        "component": "aem-content",
+        "name": "source",
+        "label": "Data Source (Sheet URL)"
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Variant",
+        "options": [
+          {
+            "name": "SEC Filings",
+            "value": "sec-filings"
+          },
+          {
+            "name": "Insider Filings",
+            "value": "insider-filings"
+          },
+          {
+            "name": "Term Sheets",
+            "value": "term-sheets"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "funding-overview",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Content",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text"
       }
     ]
   },
@@ -212,6 +466,202 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "historic-prices",
+    "fields": [
+      {
+        "component": "text",
+        "name": "symbol",
+        "label": "Ticker Symbol",
+        "value": "AXP"
+      },
+      {
+        "component": "aem-content",
+        "name": "source",
+        "label": "Data Source (Optional)"
+      }
+    ]
+  },
+  {
+    "id": "information-request",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "value": "Information Request"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description"
+      }
+    ]
+  },
+  {
+    "id": "investment-calculator",
+    "fields": [
+      {
+        "component": "text",
+        "name": "symbol",
+        "label": "Ticker Symbol",
+        "value": "AXP"
+      },
+      {
+        "component": "aem-content",
+        "name": "source",
+        "label": "Data Source (Optional)"
+      }
+    ]
+  },
+  {
+    "id": "investor-alerts",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "value": "Investor Alerts"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description"
+      }
+    ]
+  },
+  {
+    "id": "news-list",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Section Heading",
+        "value": "Investor Relations News"
+      },
+      {
+        "component": "text",
+        "name": "count",
+        "label": "Number of Items",
+        "valueType": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "id": "sec-filings-preview",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Section Heading",
+        "value": "SEC Filings"
+      },
+      {
+        "component": "text",
+        "name": "count",
+        "label": "Number of Filings",
+        "valueType": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "id": "stock-chart",
+    "fields": [
+      {
+        "component": "text",
+        "name": "symbol",
+        "label": "Ticker Symbol",
+        "value": "AXP"
+      },
+      {
+        "component": "text",
+        "name": "exchange",
+        "label": "Exchange",
+        "value": "NYSE"
+      }
+    ]
+  },
+  {
+    "id": "stock-quote",
+    "fields": [
+      {
+        "component": "text",
+        "name": "symbol",
+        "label": "Ticker Symbol",
+        "value": "AXP"
+      },
+      {
+        "component": "text",
+        "name": "exchange",
+        "label": "Exchange",
+        "value": "NYSE"
+      }
+    ]
+  },
+  {
+    "id": "stock-ticker",
+    "fields": [
+      {
+        "component": "text",
+        "name": "symbol",
+        "label": "Ticker Symbol",
+        "value": "AXP"
+      },
+      {
+        "component": "text",
+        "name": "exchange",
+        "label": "Exchange",
+        "value": "NYSE"
+      }
+    ]
+  },
+  {
+    "id": "upcoming-event-card",
+    "fields": [
+      {
+        "component": "text",
+        "name": "date",
+        "label": "Event Date"
+      },
+      {
+        "component": "text",
+        "name": "time",
+        "label": "Event Time"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Event Title"
+      },
+      {
+        "component": "aem-content",
+        "name": "webcastLink",
+        "label": "Webcast Link"
+      },
+      {
+        "component": "aem-content",
+        "name": "calendarLink",
+        "label": "Add to Calendar Link"
+      }
+    ]
+  },
+  {
+    "id": "year-selector",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading"
+      },
+      {
+        "component": "aem-content",
+        "name": "source",
+        "label": "Data Source (Sheet URL)"
       }
     ]
   }

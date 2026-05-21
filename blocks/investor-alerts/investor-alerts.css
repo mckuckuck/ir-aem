@@ -1,0 +1,81 @@
+.investor-alerts {
+  padding: 2rem 0;
+}
+
+.ia-inner {
+  max-width: 500px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.ia-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.ia-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 1.5rem;
+}
+
+.ia-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ia-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ia-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.ia-input {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.ia-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ia-checkbox-label {
+  font-size: 0.875rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.ia-submit {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #006fcf;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+
+.ia-submit:hover {
+  background: #0057a8;
+}

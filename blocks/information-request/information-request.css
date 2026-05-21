@@ -1,0 +1,96 @@
+.information-request {
+  padding: 2rem 0;
+}
+
+.ir-form-inner {
+  max-width: 700px;
+}
+
+.ir-form-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.ir-form-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 2rem;
+}
+
+.ir-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ir-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.ir-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ir-form-field-full {
+  grid-column: 1 / -1;
+}
+
+.ir-form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.ir-form-input {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.ir-form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.ir-form-captcha {
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.ir-form-captcha-note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.ir-form-submit {
+  padding: 0.75rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #006fcf;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+
+.ir-form-submit:hover {
+  background: #0057a8;
+}
+
+@media (width <= 768px) {
+  .ir-form-row {
+    grid-template-columns: 1fr;
+  }
+}

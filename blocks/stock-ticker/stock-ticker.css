@@ -1,0 +1,87 @@
+.stock-ticker {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 400px;
+}
+
+.stock-ticker-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.stock-ticker-symbol {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-brand-blue, #006fcf);
+}
+
+.stock-ticker-exchange {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.stock-ticker-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stock-ticker-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.stock-ticker-change {
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stock-ticker-change.positive {
+  color: #0a8a0a;
+}
+
+.stock-ticker-change.negative {
+  color: #d41111;
+}
+
+.stock-ticker-details {
+  display: flex;
+  gap: 24px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+  margin-bottom: 12px;
+}
+
+.stock-ticker-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stock-ticker .detail-label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.stock-ticker .detail-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.stock-ticker-delay {
+  font-size: 0.75rem;
+  color: #999;
+}
