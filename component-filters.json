@@ -19,6 +19,12 @@
     ]
   },
   {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
+    ]
+  },
+  {
     "id": "annual-reports-gallery",
     "components": [
       "annual-report-entry"

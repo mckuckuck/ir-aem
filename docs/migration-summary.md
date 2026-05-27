@@ -5,17 +5,19 @@
 We are migrating the American Express Investor Relations site (https://ir.americanexpress.com) to AEM Edge Delivery Services (xwalk project type). 
 
 **AEM Instance:** `https://author-p92869-e1797231.adobeaemcloud.com`
-**Project repo:** `/backups/mckuckuck/aem-ir/repo`
+**Project repo:** `https://github.com/mckuckuck/ir-aem`
 **Project type:** xwalk (markup-based EDS)
-**fstab mount:** `https://author-p92869-e1797231.adobeaemcloud.com/bin/franklin.delivery/mckuckuck/aem-ir/main`
-**Library URL:** `https://main--aem-ir--mckuckuck.aem.page/tools/sidekick/library.json`
+**fstab mount:** `https://author-p92869-e1797231.adobeaemcloud.com/bin/franklin.delivery/mckuckuck/ir-aem/main`
+**Library URL:** `https://main--ir-aem--mckuckuck.aem.page/tools/sidekick/library.json`
 **Content path:** `/content/aem-ir`
+**Organization:** `mckuckuck`
+**Site:** `ir-aem`
 
 ## Current Status
 
 ### ✅ Phase 1: Block Development — COMPLETE
 
-All 23 custom blocks built with JS, CSS, and Universal Editor model files (`_<block>.json`).
+All 24 custom blocks built with JS, CSS, and Universal Editor model files (`_<block>.json`).
 
 | # | Block | Variants | Status |
 |---|-------|----------|--------|
@@ -42,14 +44,15 @@ All 23 custom blocks built with JS, CSS, and Universal Editor model files (`_<bl
 | 21 | Commercial Paper | — | ✅ Built |
 | 22 | Email Alerts Form | — | ✅ Built |
 | 23 | Information Request | — | ✅ Built |
+| 24 | Accordion | — | ✅ Built (from AEM Block Collection) |
 
 **Standard EDS blocks configured:** Cards, Columns, Fragment (with model files)
 
-**Generated files:** `component-models.json`, `component-definition.json`, `component-filters.json` (35 total components registered)
+**Generated files:** `component-models.json`, `component-definition.json`, `component-filters.json` (37 total components registered)
 
-### ✅ Phase 2: Content Migration — COMPLETE (local)
+### ✅ Phase 2: Content Migration — COMPLETE
 
-All 22 pages created as local HTML content with corresponding `.plain.html` files for md2jcr processing.
+All 21 pages created as local HTML content with corresponding `.plain.html` files for md2jcr processing. Content is backed up in `tools/content-backup/` and can be restored with `bash tools/restore-content.sh`.
 
 | Section | Pages | Content Files |
 |---------|-------|---------------|
@@ -75,51 +78,102 @@ All 22 pages created as local HTML content with corresponding `.plain.html` file
 | | Information Request | `content/resources/information-request.html` |
 | | Our Contact Information | `content/resources/our-contact-information.html` |
 
-### 🔲 Phase 2 Remaining: Data Sheets
+### ✅ Phase 2 Data Sheets — COMPLETE
 
-13 spreadsheet data sources referenced by blocks but not yet populated:
+All 13 spreadsheet data sources populated with real data from asset inventory:
 
-- `sec-filings.json` — SEC filings data
-- `events.json` — Events data
-- `news.json` — News items (not yet created)
-- `insider-filings.json` — Insider transaction data
-- `term-sheets.json` — Term sheets data
-- `pillar3-disclosures.json` — Pillar 3 disclosure documents
-- `lcr-disclosures.json` — LCR disclosure documents
-- `fi-presentations.json` — Fixed income presentations
-- `reporting-resources.json` — ESG/reporting documents
-- `abs-servicer-reports-master.json` — ABS servicer reports
-- `abs-performance-master.json` — ABS performance data
-- `abs-servicer-reports-issuance.json` — ABS issuance reports
-- `abs-performance-issuance.json` — ABS issuance performance
+| Sheet | Records | Feeds |
+|-------|---------|-------|
+| `sec-filings.json` | 15 filings | Earnings page + IR Home |
+| `events.json` | 10 events | Events page + IR Home |
+| `news.json` | 12 items | News page + IR Home |
+| `insider-filings.json` | 12 transactions | Insider Filings page |
+| `term-sheets.json` | 8 entries | Fixed Income page |
+| `pillar3-disclosures.json` | 4 disclosures | Pillar 3 page |
+| `lcr-disclosures.json` | 6 disclosures | LCR page |
+| `fi-presentations.json` | 5 presentations | Fixed Income page |
+| `reporting-resources.json` | 4 documents | Reporting & Resources page |
+| `abs-servicer-reports-master.json` | 4 reports | Fixed Income page |
+| `abs-performance-master.json` | 4 reports | Fixed Income page |
+| `abs-servicer-reports-issuance.json` | 4 reports | Fixed Income page |
+| `abs-performance-issuance.json` | 4 reports | Fixed Income page |
 
-### 🔲 Phase 3: Design & Styling — NOT STARTED
+### ✅ Phase 3: Design & Styling — COMPLETE
 
-- AmEx blue palette (#006fcf primary)
-- Roboto typography (fonts already in repo at `fonts/`)
-- Responsive breakpoints
-- Per-block visual polish to match source site
+Site-wide design system migrated from source site with per-block styling applied.
+
+**Design tokens established:**
+- Primary blue: `#006fcf` (`--color-primary`)
+- Navy (headings): `#00175a` (`--color-navy`)
+- Text: `#333` (`--text-color`)
+- Border: `#ecedee` (`--color-border`)
+- Light background: `#f7f8f9` (`--light-color`)
+
+**Typography:**
+- Body: Roboto (local fonts in `fonts/`)
+- Headings: Roboto Condensed (local fonts in `fonts/`)
+
+**Breakpoints (matching source site):**
+- Mobile: `< 480px`
+- Tablet → Desktop: `>= 768px`
+- Mobile-only overrides: `<= 768px`
+
+**All 23 blocks styled** with design tokens — no hardcoded brand colors remain. CSS passes linting cleanly.
+
+### ✅ Image Assets — COMPLETE
+
+54 image assets downloaded from source site and organized for AEM DAM upload.
+
+**DAM structure:** `/content/dam/ir-aem/media/`
+
+| Path | Contents | Count |
+|------|----------|-------|
+| `/content/dam/ir-aem/media/site/` | Hero bg, funding overview, SEC thumbnail, favicon | 4 |
+| `/content/dam/ir-aem/media/covers/` | Annual report covers (2008–2025) | 18 |
+| `/content/dam/ir-aem/media/portraits/` | Executive & Board portraits | 31 |
+
+**Upload package:** `assets-images-dam.tar.gz` (3.1MB) — extracts directly to DAM paths.
+
+### ✅ JCR Content Package — COMPLETE
+
+JCR XML content package generated for all 21 pages at `content-packages/ir-content.zip` (83KB, 174 XML nodes).
+
+**Generator script:** `node tools/generate-jcr-package.js`
+
+**Upload to AEM:**
+```
+npx @adobe/aem-import-helper aem upload \
+  --zip content-packages/ir-content.zip \
+  --target https://author-p92869-e1797231.adobeaemcloud.com \
+  --token <YOUR_AEM_TOKEN>
+```
+
+Or upload via Package Manager at the AEM instance.
+
+### ✅ AEM Config Service — RESOLVED
+
+The site `mckuckuck/ir-aem` Config Service registration has been updated. md2jcr now recognizes the project correctly.
 
 ### 🔲 Phase 4: QA & Finalization — NOT STARTED
 
-### ⚠️ Blocking Issue: AEM Config Service
-
-The md2jcr Sidekick tool reports "Missing site configuration" when attempting to push content to AEM. The site `mckuckuck/aem-ir` needs its Config Service registration updated to recognize it as a markup/xwalk project with:
-- `contentSourceUrl`: `https://author-p92869-e1797231.adobeaemcloud.com`
-- `contentSourceType`: `markup`
-
-Until resolved, content cannot be pushed to AEM via md2jcr.
+- Full-page visual verification against source site
+- Navigation (header/footer) setup
+- Responsive testing across breakpoints
+- Performance audit (PageSpeed Insights)
+- Content accuracy review
 
 ## Site Scope
 
-- **22 static pages** + a News Detail page template
-- **678 assets** (PDFs, XLS, XBRL ZIPs, HTML files) — already downloaded and uploaded to AEM DAM at `/content/dam/ir/`
-- Assets are also stored locally in `assets-zipped/` as 9 tar.gz archives (<100MB each)
-- Full asset inventory CSV at `docs/block-analysis/asset-inventory.csv` (source URL, local path, AEM DAM path, filename, file type, page where used)
+- **21 static pages** + a News Detail page template
+- **678 document assets** (PDFs, XLS, XBRL ZIPs, HTML files) — uploaded to AEM DAM at `/content/dam/ir-aem/`
+- **54 image assets** — downloaded and packaged for upload to `/content/dam/ir-aem/media/`
+- Document assets stored locally in `assets-zipped/` as 9 tar.gz archives (<100MB each)
+- Image assets stored locally in `assets-images/` (organized by page) and `assets-images-dam.tar.gz` (organized by DAM path)
+- Full asset inventory CSV at `docs/block-analysis/asset-inventory.csv`
 
-## Block Architecture (35 components registered)
+## Block Architecture (37 components registered)
 
-### 23 Custom blocks (built)
+### 24 Custom blocks (built and styled)
 
 - **Hero** (2 variants): `hero (home)` with upcoming event + stock ticker; base `hero` with breadcrumb + page title
 - **Filterable Data Table** (3 variants): `sec-filings`, `insider-filings`, `term-sheets` — dropdown filters + data table + download links, powered by sheets
@@ -144,8 +198,9 @@ Until resolved, content cannot be pushed to AEM via md2jcr.
 - **Commercial Paper** — structured content with ratings and contacts
 - **Email Alerts Form** — subscribe + unsubscribe sections
 - **Information Request** — multi-field contact form with CAPTCHA placeholder
+- **Accordion** — expandable question/answer sections (from AEM Block Collection, uses native `<details>`/`<summary>`)
 
-### 5 Standard EDS blocks (configured with models)
+### 3 Standard EDS blocks (configured with models)
 
 - Columns
 - Cards (+ Card items)
@@ -171,6 +226,28 @@ Until resolved, content cannot be pushed to AEM via md2jcr.
 
 - Document List, Dividends Table, Committee Composition, Credit Ratings, Commercial Paper Ratings, Rate Info
 
+## Asset Architecture
+
+### Document assets (678 files) — at `/content/dam/ir-aem/`
+
+PDFs, XLS, XBRL ZIPs organized by category:
+- `earnings/` — quarterly earnings press releases, presentations, tables
+- `sec-filings/` — SEC filings from EDGAR
+- `annual-reports/` — annual reports and proxy statements
+- `disclosures/` — Pillar 3 and LCR disclosures
+- `fixed-income/` — FI presentations, ABS reports
+- `downloads/` — term sheets, prospectus supplements
+- `sustainability/` — ESG and sustainability reports
+
+### Image assets (54 files) — at `/content/dam/ir-aem/media/`
+
+```
+/content/dam/ir-aem/media/
+├── site/             hero-bg.jpg, funding-overview.jpg, sec-filings-thumbnail.png, favicon.ico
+├── covers/           2008-cover.png through 2025-cover.png (annual report thumbnails)
+└── portraits/        31 executive & board member headshots
+```
+
 ## Key Design Decisions Made
 
 1. **One Hero block with variants** — `hero (home)` for IR Home (event card + stock ticker), base `hero` for 21 interior pages (breadcrumb + title + blue background)
@@ -179,10 +256,18 @@ Until resolved, content cannot be pushed to AEM via md2jcr.
 4. **Document List is a reusable custom block** — used on Governance Framework (13 charters/policies), Policy Engagement (10 contribution reports), and Fixed Income (sustainability + ABS program docs)
 5. **Governance/Policy pages split into Default Content + Document List** — rich text intro followed by structured download list
 6. **Fixed Income page uses Tabs block** with 7 tabs, each containing nested blocks (Year Selectors, Document Lists, Tables, rich text)
-7. **All assets hosted in AEM** (not external CDNs) — DAM path: `/content/dam/ir/{category}/{year}/filename.pdf`
+7. **All assets hosted in AEM** (not external CDNs) — Documents at `/content/dam/ir-aem/`, images at `/content/dam/ir-aem/media/`
 8. **News Detail pages** are a single template — all Default Content + Columns for contacts, with "About AmEx" boilerplate as a potential shared fragment
 9. **Component naming** — md2jcr title-cases CSS class names, so `sec-filings-preview` becomes "Sec Filings Preview" (not "SEC Filings Preview") in component-definition.json
 10. **Content path** — Updated `paths.json` to map `/content/aem-ir/` → `/` for delivery pipeline
+11. **DAM image separation** — Documents at `/content/dam/ir-aem/` root; images separated under `/content/dam/ir-aem/media/` with subfolders `site/`, `covers/`, `portraits/`
+12. **Breakpoints match source** — 480px/768px from original site instead of default EDS 600px/900px
+13. **Field hinting for xwalk** — Blocks use `<!-- field:name -->` HTML comments for md2jcr mapping; collapsible fields (imageAlt, linkText, etc.) don't get separate cells
+14. **Design tokens** — All block CSS uses CSS custom properties; no hardcoded brand colors
+15. **md2jcr content rules** — Simple blocks (one model, no container) must have 1 cell per row, 1 row per field. No key-value pairs. Field collapsing means `imageAlt`, `linkText`, etc. don't get their own row/cell. Raw HTML `<table>` elements in their own section div get interpreted as blocks — keep tables inside the same section as surrounding text to avoid this.
+16. **Accordion from Block Collection** — FAQ uses the standard accordion block from `github.com/adobe/aem-block-collection` rather than a custom implementation. Uses native HTML5 `<details>`/`<summary>` for accessibility.
+17. **Committee Composition as default content** — The board member/committee matrix is authored as default content (paragraphs) rather than a raw HTML table, since md2jcr interprets table headers as block names.
+18. **News List uses data source** — The news-list block on IR Home only stores heading + count in content; actual news items are fetched from `news.json` at runtime by the block JS.
 
 ## Key Files in Repo
 
@@ -191,18 +276,24 @@ Until resolved, content cannot be pushed to AEM via md2jcr.
 | `docs/block-analysis/block-analysis.md` | Full visual block analysis with annotated screenshots of all 22 pages |
 | `docs/block-analysis/asset-inventory.csv` | 678-row CSV mapping source URL → local path → AEM DAM path → page used on |
 | `docs/block-analysis/screenshots/` | 21 annotated page screenshots with block overlays |
-| `ir-americanexpress-blocks.csv` | Block inventory CSV with properties and types |
-| `ir-americanexpress-pages.md` | Page list with URLs |
-| `assets-zipped/` | 9 tar.gz archives of all downloaded assets |
-| `tools/upload-assets-to-aem.sh` | Script for uploading to AEM DAM (already run successfully) |
-| `tools/download-assets.sh` | Script for downloading from source site |
-| `.migration/project.json` | Project config (xwalk, author instance, library URL) |
+| `tools/restore-content.sh` | Restore content pages from backup |
+| `tools/generate-jcr-package.js` | Generate JCR content package ZIP from .plain.html files |
+| `tools/download-missing-assets.sh` | Download 54 image assets from source site |
+| `tools/upload-assets-to-aem.sh` | Script for uploading documents to AEM DAM |
+| `tools/download-assets.sh` | Script for downloading documents from source site |
+| `tools/content-backup/` | Backup of all 21 page HTML files |
+| `assets-images/` | Downloaded images organized by page (reference copy) |
+| `assets-images-dam.tar.gz` | Images packaged matching AEM DAM paths (upload-ready) |
+| `content-packages/ir-content.zip` | JCR content package (21 pages, 174 XML nodes) |
+| `migration-work/brand.json` | Extracted brand tokens from source site |
 | `fstab.yaml` | EDS mount config (markup type, AEM author) |
 | `paths.json` | Content path mapping (`/content/aem-ir/` → `/`) |
 | `tools/sidekick/config.json` | Sidekick config with contentSourceUrl and contentPath |
 | `component-models.json` | Generated Universal Editor models (35 components) |
 | `component-definition.json` | Generated component registry |
 | `component-filters.json` | Generated filter definitions |
-| `content/` | 22 pages as HTML + .plain.html for md2jcr |
-| `content-packages/ir-home/.content.xml` | JCR XML for IR Home page (manual export) |
+| `styles/styles.css` | Global design system (colors, typography, spacing, sections) |
+| `styles/fonts.css` | Roboto + Roboto Condensed @font-face declarations |
+| `content/` | 21 pages as HTML + .plain.html |
+| `content/*.json` | 13 data sheet files |
 | `blocks/` | 23 custom blocks + 3 standard blocks (JS, CSS, _block.json) |
