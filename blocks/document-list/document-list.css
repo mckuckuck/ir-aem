@@ -13,11 +13,11 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.875rem 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .document-list-item:first-child {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--color-border);
 }
 
 .document-list-icon {
@@ -30,7 +30,7 @@
 
 .document-list-link {
   flex: 1;
-  color: #006fcf;
+  color: var(--color-primary);
   text-decoration: none;
   font-size: 0.95rem;
 }

@@ -9,7 +9,7 @@
 .ep-tabs {
   display: flex;
   gap: 0;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 2px solid var(--color-border);
   margin-bottom: 2rem;
 }
 
@@ -27,12 +27,12 @@
 }
 
 .ep-tab:hover {
-  color: #006fcf;
+  color: var(--color-primary);
 }
 
 .ep-tab-active {
-  color: #006fcf;
-  border-bottom-color: #006fcf;
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
 .ep-panel {
@@ -50,7 +50,7 @@
 }
 
 .ep-card {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   overflow: hidden;
   transition: box-shadow 0.2s;
@@ -86,7 +86,7 @@
 
 .ep-card-title {
   font-size: 0.85rem;
-  color: #006fcf;
+  color: var(--color-primary);
   margin: 0 0 0.5rem;
 }
 

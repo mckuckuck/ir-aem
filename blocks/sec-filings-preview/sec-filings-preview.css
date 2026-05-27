@@ -1,6 +1,6 @@
 .sec-filings-preview {
   background: #fff;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 24px;
 }
@@ -16,20 +16,20 @@
   justify-content: space-between;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .sec-filings-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-color);
   margin: 0;
 }
 
 .sec-filings-view-all {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--color-brand-blue, #006fcf);
+  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -60,7 +60,7 @@
   padding: 4px 8px;
   border-radius: 4px;
   background: #eef6ff;
-  color: var(--color-brand-blue, #006fcf);
+  color: var(--color-primary);
   white-space: nowrap;
 }
 
@@ -96,7 +96,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   padding: 4px 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   color: #333;
   text-decoration: none;
@@ -104,6 +104,6 @@
 }
 
 .sec-filing-download:hover {
-  border-color: var(--color-brand-blue, #006fcf);
-  color: var(--color-brand-blue, #006fcf);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }

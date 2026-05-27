@@ -3,7 +3,7 @@
 }
 
 .stock-chart-inner {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -23,7 +23,7 @@
   flex-wrap: wrap;
   gap: 0.25rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 1rem;
 }
 
@@ -31,7 +31,7 @@
   padding: 0.4rem 0.75rem;
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   background: #fff;
   cursor: pointer;
@@ -44,9 +44,9 @@
 }
 
 .sc-range-active {
-  background: #006fcf;
+  background: var(--color-primary);
   color: #fff;
-  border-color: #006fcf;
+  border-color: var(--color-primary);
 }
 
 .sc-chart-area {
@@ -78,7 +78,7 @@
   gap: 1rem;
   flex-wrap: wrap;
   padding-top: 1rem;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--color-border);
 }
 
 .sc-compare-label {

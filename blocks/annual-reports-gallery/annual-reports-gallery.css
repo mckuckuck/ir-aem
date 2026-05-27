@@ -19,7 +19,7 @@
 }
 
 .arg-card {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   overflow: hidden;
   transition: box-shadow 0.2s;
@@ -61,7 +61,7 @@
 
 .arg-card-link {
   font-size: 0.85rem;
-  color: #006fcf;
+  color: var(--color-primary);
   text-decoration: none;
 }
 

@@ -1,6 +1,6 @@
 .news-list {
   background: #fff;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 24px;
 }
@@ -13,13 +13,13 @@
 .news-list-header {
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .news-list-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -51,7 +51,7 @@
 
 .news-item-title {
   font-size: 0.9375rem;
-  color: var(--color-brand-blue, #006fcf);
+  color: var(--color-primary);
   text-decoration: none;
   line-height: 1.4;
   font-weight: 500;
@@ -64,13 +64,13 @@
 .news-list-footer {
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--color-border);
 }
 
 .news-view-all {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-brand-blue, #006fcf);
+  color: var(--color-primary);
   text-decoration: none;
 }
 
