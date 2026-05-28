@@ -73,8 +73,21 @@
   text-decoration: underline;
 }
 
+.hero .hero-title-box {
+  background: #fff;
+  padding: 24px 32px;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.hero .hero-title-box h1 {
+  color: var(--color-navy);
+  font-size: 1.5rem;
+  margin: 8px 0 0;
+}
+
 .hero .hero-logo {
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 
 .hero .hero-logo picture,

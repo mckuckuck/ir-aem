@@ -1,67 +1,16 @@
-function buildStockTicker(rows) {
+function buildStockTicker() {
   const ticker = document.createElement('div');
   ticker.className = 'hero-stock-ticker';
-
-  const stockRows = rows.filter((row) => {
-    const text = row.textContent.trim();
-    return text && /(\$|NYSE|market cap|volume)/i.test(text);
-  });
-
-  if (stockRows.length === 0) {
-    ticker.innerHTML = `
-      <div class="ticker-symbol">NYSE: AXP</div>
-      <div class="ticker-price">--</div>
-      <div class="ticker-change">--</div>
-      <div class="ticker-details">
-        <span class="ticker-market-cap"><strong>Market Cap:</strong> --</span>
-        <span class="ticker-volume"><strong>Volume:</strong> --</span>
-      </div>
-      <div class="ticker-delay">Price delayed by 20 minutes</div>
-    `;
-    return ticker;
-  }
-
-  stockRows.forEach((row) => {
-    const cells = [...row.children];
-    cells.forEach((cell) => {
-      const text = cell.textContent.trim();
-      if (/NYSE/i.test(text)) {
-        const el = document.createElement('div');
-        el.className = 'ticker-symbol';
-        el.textContent = text;
-        ticker.append(el);
-      } else if (/^\$[\d,.]+$/.test(text)) {
-        const el = document.createElement('div');
-        el.className = 'ticker-price';
-        el.textContent = text;
-        ticker.append(el);
-      } else if (/market cap/i.test(text)) {
-        const el = document.createElement('span');
-        el.className = 'ticker-market-cap';
-        el.innerHTML = `<strong>Market Cap:</strong> ${text.replace(/market cap:?\s*/i, '')}`;
-        const details = ticker.querySelector('.ticker-details') || document.createElement('div');
-        details.className = 'ticker-details';
-        details.append(el);
-        if (!ticker.querySelector('.ticker-details')) ticker.append(details);
-      } else if (/volume/i.test(text)) {
-        const el = document.createElement('span');
-        el.className = 'ticker-volume';
-        el.innerHTML = `<strong>Volume:</strong> ${text.replace(/volume:?\s*/i, '')}`;
-        const details = ticker.querySelector('.ticker-details') || document.createElement('div');
-        details.className = 'ticker-details';
-        details.append(el);
-        if (!ticker.querySelector('.ticker-details')) ticker.append(details);
-      }
-    });
-  });
-
-  if (!ticker.querySelector('.ticker-delay')) {
-    const delay = document.createElement('div');
-    delay.className = 'ticker-delay';
-    delay.textContent = 'Price delayed by 20 minutes';
-    ticker.append(delay);
-  }
-
+  ticker.innerHTML = `
+    <div class="ticker-symbol">NYSE: AXP</div>
+    <div class="ticker-price">--</div>
+    <div class="ticker-change">--</div>
+    <div class="ticker-details">
+      <span class="ticker-market-cap"><strong>Market Cap:</strong> --</span>
+      <span class="ticker-volume"><strong>Volume:</strong> --</span>
+    </div>
+    <div class="ticker-delay">Price delayed by 20 minutes</div>
+  `;
   return ticker;
 }
 
@@ -93,47 +42,14 @@ function decorateBaseHero(block) {
   block.append(content);
 }
 
-function buildEventFromParagraphs(container) {
-  const paragraphs = container.querySelectorAll('p');
-  if (paragraphs.length === 0) return null;
-
-  const card = document.createElement('div');
-  card.className = 'hero-event-card';
-
-  paragraphs.forEach((p, i) => {
-    const links = p.querySelectorAll('a');
-    if (links.length > 0 && !p.textContent.replace(links[0].textContent, '').trim().match(/\d{4}/)) {
-      const linksWrapper = document.createElement('div');
-      linksWrapper.className = 'event-links';
-      links.forEach((link) => {
-        const btn = link.cloneNode(true);
-        btn.className = 'event-link';
-        linksWrapper.append(btn);
-      });
-      card.append(linksWrapper);
-    } else if (i === 0) {
-      const dateEl = document.createElement('div');
-      dateEl.className = 'event-date';
-      dateEl.textContent = p.textContent.trim();
-      card.append(dateEl);
-    } else {
-      const titleEl = document.createElement('div');
-      titleEl.className = 'event-title';
-      titleEl.textContent = p.textContent.trim();
-      card.append(titleEl);
-    }
-    p.remove();
-  });
-
-  return card;
-}
-
 function decorateHomeHero(block) {
   const rows = [...block.children];
   const content = document.createElement('div');
   content.className = 'hero-content';
 
   const pictures = block.querySelectorAll('picture');
+
+  // Row 1: background image
   if (pictures.length > 0) {
     const bgWrapper = document.createElement('div');
     bgWrapper.className = 'hero-background';
@@ -141,29 +57,72 @@ function decorateHomeHero(block) {
     block.prepend(bgWrapper);
   }
 
+  // Row 2: logo — inside the title box
+  // Row 3: title (h1) — inside the title box
+  const titleBox = document.createElement('div');
+  titleBox.className = 'hero-title-box';
+
   if (pictures.length > 1) {
     const logoWrapper = document.createElement('div');
     logoWrapper.className = 'hero-logo';
     logoWrapper.append(pictures[1]);
-    content.append(logoWrapper);
+    titleBox.append(logoWrapper);
   }
 
   const title = block.querySelector('h1, h2');
   if (title) {
-    const titleParent = title.parentElement;
-    content.append(title);
-
-    const eventCard = buildEventFromParagraphs(titleParent);
-    if (eventCard) content.append(eventCard);
+    titleBox.append(title);
   }
 
+  content.append(titleBox);
+
+  // Row 4: event info — below the title box
+  const eventRow = rows.find((row) => {
+    const hasHeading = row.querySelector('h1, h2');
+    const hasPicture = row.querySelector('picture');
+    return !hasHeading && !hasPicture && row.querySelector('p');
+  });
+
+  if (eventRow) {
+    const eventCard = document.createElement('div');
+    eventCard.className = 'hero-event-card';
+    const paragraphs = eventRow.querySelectorAll('p');
+
+    paragraphs.forEach((p, i) => {
+      const links = p.querySelectorAll('a');
+      const hasDatePattern = /\d{1,2},\s*\d{4}/.test(p.textContent);
+
+      if (links.length > 0 && !hasDatePattern) {
+        const linksWrapper = document.createElement('div');
+        linksWrapper.className = 'event-links';
+        links.forEach((link) => {
+          const btn = link.cloneNode(true);
+          btn.className = 'event-link';
+          linksWrapper.append(btn);
+        });
+        eventCard.append(linksWrapper);
+      } else if (i === 0 || hasDatePattern) {
+        const dateEl = document.createElement('div');
+        dateEl.className = 'event-date';
+        dateEl.textContent = p.textContent.trim();
+        eventCard.append(dateEl);
+      } else {
+        const titleEl = document.createElement('div');
+        titleEl.className = 'event-title';
+        titleEl.textContent = p.textContent.trim();
+        eventCard.append(titleEl);
+      }
+    });
+
+    content.append(eventCard);
+  }
+
+  // Stock ticker grid
   const grid = document.createElement('div');
   grid.className = 'hero-grid';
-
-  const ticker = buildStockTicker(rows);
-  if (ticker) grid.append(ticker);
-
-  if (grid.children.length > 0) content.append(grid);
+  const ticker = buildStockTicker();
+  grid.append(ticker);
+  content.append(grid);
 
   rows.forEach((row) => row.remove());
   block.append(content);

@@ -50,9 +50,16 @@
         },
         {
           "component": "richtext",
-          "name": "text",
+          "name": "title",
           "value": "",
-          "label": "Text",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "eventInfo",
+          "value": "",
+          "label": "Event Info",
           "valueType": "string"
         }
       ]
