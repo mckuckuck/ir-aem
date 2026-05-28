@@ -37,7 +37,8 @@
           "options": [
             { "name": "SEC Filings", "value": "sec-filings" },
             { "name": "Insider Filings", "value": "insider-filings" },
-            { "name": "Term Sheets", "value": "term-sheets" }
+            { "name": "Term Sheets", "value": "term-sheets" },
+            { "name": "News", "value": "news" }
           ]
         }
       ]

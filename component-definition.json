@@ -391,7 +391,23 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Hero",
-                  "model": "hero"
+                  "model": "hero",
+                  "classes": "home"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero (Interior)",
+          "id": "hero-interior",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Hero",
+                  "model": "hero-interior"
                 }
               }
             }

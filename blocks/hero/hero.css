@@ -4,12 +4,19 @@
   padding: 0;
 }
 
+/* Interior hero (base variant) — navy background + AmEx watermark */
 .hero {
   position: relative;
   padding: 48px 24px;
-  min-height: 200px;
-  background-color: var(--color-primary);
+  min-height: 300px;
+  background-color: rgb(0 23 90);
+  background-image: url("/icons/american-express-banner.svg");
+  background-position: 100% calc(100% - 20px);
+  background-repeat: no-repeat;
+  background-size: 250px;
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
 
 .hero .hero-background {
@@ -18,11 +25,18 @@
   z-index: 0;
 }
 
-.hero .hero-background picture,
+.hero .hero-background picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero .hero-background img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center right;
 }
 
 .hero .hero-content {
@@ -30,6 +44,7 @@
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .hero h1 {
@@ -73,141 +88,163 @@
   text-decoration: underline;
 }
 
+/* Hero Home variant — full-bleed centurion background, no watermark */
+.hero.home {
+  padding: 48px 24px 56px;
+  min-height: 400px;
+  background-image: none;
+  align-items: stretch;
+}
+
+.hero.home .hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero.home .hero-left {
+  flex: 1;
+}
+
+.hero.home .hero-right {
+  flex: 0 0 auto;
+}
+
+/* White title box with logo */
 .hero .hero-title-box {
-  background: #fff;
-  padding: 24px 32px;
+  background: #f9f6f0;
+  padding: 32px 40px;
   display: inline-block;
   margin-bottom: 24px;
 }
 
-.hero .hero-title-box h1 {
-  color: var(--color-navy);
-  font-size: 1.5rem;
-  margin: 8px 0 0;
-}
-
 .hero .hero-logo {
-  margin-bottom: 4px;
+  margin-bottom: 16px;
 }
 
 .hero .hero-logo picture,
 .hero .hero-logo img {
-  height: 48px;
+  height: 80px;
   width: auto;
+  display: block;
 }
 
-/* Hero Home variant */
-.hero.home {
-  padding: 48px 24px 56px;
-  min-height: 320px;
+.hero .hero-title-divider {
+  width: 40px;
+  height: 3px;
+  background: var(--color-navy, #00175a);
+  margin-bottom: 16px;
 }
 
-.hero.home h1 {
-  font-size: 2.5rem;
-  margin-bottom: 32px;
-}
-
-.hero .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+.hero .hero-title-box h1 {
+  color: var(--color-navy, #00175a);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
 }
 
 /* Event card */
 .hero .hero-event-card {
-  background: rgb(255 255 255 / 10%);
-  border: 1px solid rgb(255 255 255 / 20%);
-  border-radius: 8px;
-  padding: 24px;
   color: #fff;
+  margin-top: 8px;
 }
 
 .hero .hero-event-card .event-date {
   font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-
-.hero .hero-event-card .event-time {
-  font-size: 0.8125rem;
-  opacity: 0.8;
-  margin-bottom: 12px;
+  opacity: 0.9;
+  margin-bottom: 8px;
 }
 
 .hero .hero-event-card .event-title {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 16px;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .hero .hero-event-card .event-links {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .hero .hero-event-card .event-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  background: #fff;
-  color: var(--color-primary);
-  border-radius: 4px;
-  font-size: 0.8125rem;
-  font-weight: 600;
+  color: #fff;
+  font-size: 0.875rem;
   text-decoration: none;
-  transition: background 0.2s;
+  opacity: 0.9;
+  transition: opacity 0.2s;
 }
 
 .hero .hero-event-card .event-link:hover {
-  background: #f0f0f0;
+  opacity: 1;
+  text-decoration: underline;
 }
 
 /* Stock ticker in hero */
 .hero .hero-stock-ticker {
-  background: rgb(255 255 255 / 10%);
-  border: 1px solid rgb(255 255 255 / 20%);
-  border-radius: 8px;
-  padding: 24px;
+  background: rgb(0 30 90 / 80%);
+  border: 1px solid rgb(255 255 255 / 15%);
+  padding: 20px 24px;
   color: #fff;
+  min-width: 240px;
 }
 
-.hero .hero-stock-ticker .ticker-symbol {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  opacity: 0.8;
+.hero .hero-stock-ticker .ticker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 8px;
 }
 
+.hero .hero-stock-ticker .ticker-symbol {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
 .hero .hero-stock-ticker .ticker-price {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .hero .hero-stock-ticker .ticker-change {
   font-size: 0.875rem;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  opacity: 0.9;
 }
 
 .hero .hero-stock-ticker .ticker-details {
+  border-top: 1px solid rgb(255 255 255 / 20%);
+  padding-top: 12px;
+  margin-bottom: 12px;
+}
+
+.hero .hero-stock-ticker .ticker-detail-row {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  justify-content: space-between;
   font-size: 0.8125rem;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+}
+
+.hero .hero-stock-ticker .ticker-label {
+  opacity: 0.7;
+}
+
+.hero .hero-stock-ticker .ticker-value {
+  font-weight: 600;
+}
+
+.hero .hero-stock-ticker .ticker-footer {
+  border-top: 1px solid rgb(255 255 255 / 20%);
+  padding-top: 8px;
 }
 
 .hero .hero-stock-ticker .ticker-delay {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   opacity: 0.6;
-  margin-top: 8px;
 }
 
 @media (width >= 768px) {
@@ -221,14 +258,35 @@
 
   .hero.home {
     padding: 64px 32px 72px;
+    min-height: 450px;
   }
 
-  .hero.home h1 {
-    font-size: 3rem;
+  .hero.home .hero-content {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
-  .hero .hero-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+  .hero.home .hero-left {
+    flex: 1;
+    max-width: 65%;
+  }
+
+  .hero.home .hero-right {
+    flex: 0 0 280px;
+    margin-top: 0;
+  }
+
+  .hero .hero-logo picture,
+  .hero .hero-logo img {
+    height: 100px;
+  }
+
+  .hero .hero-title-box h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero .hero-event-card .event-title {
+    font-size: 1.75rem;
   }
 }

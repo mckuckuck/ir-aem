@@ -422,6 +422,10 @@
           {
             "name": "Term Sheets",
             "value": "term-sheets"
+          },
+          {
+            "name": "News",
+            "value": "news"
           }
         ]
       }
@@ -503,6 +507,32 @@
         "name": "eventInfo",
         "value": "",
         "label": "Event Info",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "hero-interior",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Background Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "title",
+        "value": "",
+        "label": "Title",
         "valueType": "string"
       }
     ]

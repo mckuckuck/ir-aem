@@ -52,7 +52,9 @@ All 24 custom blocks built with JS, CSS, and Universal Editor model files (`_<bl
 
 ### ✅ Phase 2: Content Migration — COMPLETE
 
-All 21 pages created as local HTML content with corresponding `.plain.html` files for md2jcr processing. Content is backed up in `tools/content-backup/` and can be restored with `bash tools/restore-content.sh`.
+All 21 static pages + 202 news detail pages created as local HTML content with `.plain.html` files for EDS delivery.
+
+**Static pages** (backed up in `tools/content-backup/`, restore with `bash tools/restore-content.sh`):
 
 | Section | Pages | Content Files |
 |---------|-------|---------------|
@@ -78,25 +80,43 @@ All 21 pages created as local HTML content with corresponding `.plain.html` file
 | | Information Request | `content/resources/information-request.html` |
 | | Our Contact Information | `content/resources/our-contact-information.html` |
 
+**News detail pages** (202 articles, scraped from source site):
+
+| Year | Articles | Path |
+|------|----------|------|
+| 2018 | 25 | `content/news/investor-relations-news/2018/` |
+| 2019 | 30 | `content/news/investor-relations-news/2019/` |
+| 2020 | 28 | `content/news/investor-relations-news/2020/` |
+| 2021 | 28 | `content/news/investor-relations-news/2021/` |
+| 2022 | 24 | `content/news/investor-relations-news/2022/` |
+| 2023 | 24 | `content/news/investor-relations-news/2023/` |
+| 2024 | 22 | `content/news/investor-relations-news/2024/` |
+| 2025 | 28 | `content/news/investor-relations-news/2025/` |
+| 2026 | 9 | `content/news/investor-relations-news/2026/` |
+
+Each article follows the News Detail template: H1 headline, date, body paragraphs, and contact info. Cloudflare-obfuscated emails were decoded to proper `mailto:` links.
+
 ### ✅ Phase 2 Data Sheets — COMPLETE
 
-All 13 spreadsheet data sources populated with real data from asset inventory:
+All 13 data sheets populated with real data scraped from source site and SEC EDGAR. CSVs stored in `docs/data-sheets/` with column definitions in `docs/data-sheets/README.md`.
 
-| Sheet | Records | Feeds |
-|-------|---------|-------|
-| `sec-filings.json` | 15 filings | Earnings page + IR Home |
-| `events.json` | 10 events | Events page + IR Home |
-| `news.json` | 12 items | News page + IR Home |
-| `insider-filings.json` | 12 transactions | Insider Filings page |
-| `term-sheets.json` | 8 entries | Fixed Income page |
-| `pillar3-disclosures.json` | 4 disclosures | Pillar 3 page |
-| `lcr-disclosures.json` | 6 disclosures | LCR page |
-| `fi-presentations.json` | 5 presentations | Fixed Income page |
-| `reporting-resources.json` | 4 documents | Reporting & Resources page |
-| `abs-servicer-reports-master.json` | 4 reports | Fixed Income page |
-| `abs-performance-master.json` | 4 reports | Fixed Income page |
-| `abs-servicer-reports-issuance.json` | 4 reports | Fixed Income page |
-| `abs-performance-issuance.json` | 4 reports | Fixed Income page |
+| Sheet | Records | Source | Feeds |
+|-------|---------|--------|-------|
+| `sec-filings.csv` | 463 | SEC EDGAR API | Earnings page + IR Home |
+| `events.csv` | 203 | Q4 Events API (2011-2026) | Events page + IR Home |
+| `news.csv` | 203 | Q4 Press Release API (2018-2026) | News page + IR Home |
+| `insider-filings.csv` | 2,009 | Scraped from site (2003-2026) | Insider Filings page |
+| `fi-presentations.csv` | 94 | Scraped from site (2008-2026) | Fixed Income page |
+| `pillar3-disclosures.csv` | 12 | Scraped from site (2023-2026) | Pillar 3 page |
+| `lcr-disclosures.csv` | 1 | Scraped from site (2026 only) | LCR page |
+| `reporting-resources.csv` | 5 | Scraped from site | Reporting & Resources page |
+| `term-sheets.csv` | 8 | Sample data (needs scraping) | Fixed Income page |
+| `abs-servicer-reports-master.csv` | 6 | Sample data (needs scraping) | Fixed Income page |
+| `abs-performance-master.csv` | 6 | Sample data (needs scraping) | Fixed Income page |
+| `abs-servicer-reports-issuance.csv` | 6 | Sample data (needs scraping) | Fixed Income page |
+| `abs-performance-issuance.csv` | 6 | Sample data (needs scraping) | Fixed Income page |
+
+**Note:** Sheets marked "needs scraping" still have placeholder data from the ABS tab on the Fixed Income page. The remaining 5 sheets (term-sheets + 4 ABS sheets) need to be scraped from the source site to get full historical data.
 
 ### ✅ Phase 3: Design & Styling — COMPLETE
 
@@ -154,13 +174,24 @@ Or upload via Package Manager at the AEM instance.
 
 The site `mckuckuck/ir-aem` Config Service registration has been updated. md2jcr now recognizes the project correctly.
 
-### 🔲 Phase 4: QA & Finalization — NOT STARTED
+### 🔲 Phase 4: QA & Finalization — IN PROGRESS
 
-- Full-page visual verification against source site
-- Navigation (header/footer) setup
-- Responsive testing across breakpoints
-- Performance audit (PageSpeed Insights)
-- Content accuracy review
+**Completed:**
+- [x] Hero block (home variant) fixed — logo in white box, stock ticker right-aligned, event info below, proper two-column layout
+- [x] Hero component definition updated with `"classes": "home"` template and separate interior variant model
+- [x] News detail pages created (202 articles) with decoded email contacts
+
+**Remaining:**
+- [ ] Full-page visual verification against source site
+- [ ] Navigation (header/footer) setup
+- [ ] Responsive testing across breakpoints
+- [ ] Performance audit (PageSpeed Insights)
+- [ ] Content accuracy review
+- [ ] Re-map insider-filings.csv and sec-filings.csv to use SEC.gov direct URLs (remove Q4/CloudFront dependency)
+- [ ] Download all PDFs from `s26.q4cdn.com` → host in AEM DAM
+- [ ] Update sheet document URLs to AEM DAM paths
+- [ ] Scrape remaining 5 data sheets (term-sheets + 4 ABS sheets) from Fixed Income page
+- [ ] Event detail pages (202) — decide approach (create pages or handle inline)
 
 ## Site Scope
 
@@ -268,6 +299,38 @@ PDFs, XLS, XBRL ZIPs organized by category:
 16. **Accordion from Block Collection** — FAQ uses the standard accordion block from `github.com/adobe/aem-block-collection` rather than a custom implementation. Uses native HTML5 `<details>`/`<summary>` for accessibility.
 17. **Committee Composition as default content** — The board member/committee matrix is authored as default content (paragraphs) rather than a raw HTML table, since md2jcr interprets table headers as block names.
 18. **News List uses data source** — The news-list block on IR Home only stores heading + count in content; actual news items are fetched from `news.json` at runtime by the block JS.
+19. **No Q4 CDN dependency** — This site must function independently of Q4 Inc. infrastructure. SEC filings and insider filings link directly to SEC.gov (permanent public URLs). AmEx-authored PDFs (presentations, disclosures, ABS reports) currently hosted on `s26.q4cdn.com` must be downloaded and hosted in AEM DAM, since that CDN is tied to Q4's contract and has no permanence guarantee.
+
+## Data Source Strategy
+
+The migrated site must not depend on Q4 infrastructure. Data sources and their handling:
+
+| Data | Original Source | Q4 Dependency | Migration Approach |
+|------|----------------|---------------|-------------------|
+| SEC filings | SEC EDGAR (public) | Q4 proxies via API + CloudFront PDFs | Link directly to `sec.gov/Archives/edgar/data/4962/...` |
+| Insider filings (Form 3/4/5) | SEC EDGAR (public) | Q4 renders XML → PDF/XLS on CloudFront | Link to SEC.gov; optionally host rendered PDFs in AEM DAM |
+| Events | AmEx IR team (authored) | Q4 is the CMS/host | Data migrated into AEM sheet; no ongoing Q4 dependency |
+| News / Press releases | AmEx IR team (authored) | Q4 is the CMS/host | Data migrated into AEM sheet; no ongoing Q4 dependency |
+| FI Presentations | AmEx IR team (PDFs) | Hosted on `s26.q4cdn.com` | Download PDFs → host in AEM DAM |
+| Pillar 3 / LCR disclosures | AmEx (PDFs) | Hosted on `s26.q4cdn.com` | Download PDFs → host in AEM DAM |
+| ABS reports | AmEx (PDFs) | Hosted on `s26.q4cdn.com` | Download PDFs → host in AEM DAM |
+| Sustainability reports | AmEx (PDFs) | Hosted on `s26.q4cdn.com` | Download PDFs → host in AEM DAM |
+| Term sheets | AmEx (PDFs) | Hosted on `s26.q4cdn.com` | Download PDFs → host in AEM DAM |
+
+**SEC document URL pattern:**
+```
+https://www.sec.gov/Archives/edgar/data/4962/{accession-no-dashes}/{filename}
+```
+
+**SEC submissions API (no auth required, needs User-Agent header):**
+```
+https://data.sec.gov/submissions/CIK0000004962.json
+```
+
+**Action items:**
+- [ ] Re-map insider-filings.csv and sec-filings.csv to use SEC.gov direct URLs
+- [ ] Download all PDFs from `s26.q4cdn.com` and host in AEM DAM
+- [ ] Update sheet URLs to point to AEM DAM paths instead of Q4 CDN
 
 ## Key Files in Repo
 
@@ -281,7 +344,9 @@ PDFs, XLS, XBRL ZIPs organized by category:
 | `tools/download-missing-assets.sh` | Download 54 image assets from source site |
 | `tools/upload-assets-to-aem.sh` | Script for uploading documents to AEM DAM |
 | `tools/download-assets.sh` | Script for downloading documents from source site |
+| `tools/scrape-news-articles.js` | Playwright script to scrape news detail pages (202 articles) |
 | `tools/content-backup/` | Backup of all 21 page HTML files |
+| `docs/data-sheets/` | 13 CSV files defining all sheet data with column definitions (README.md) |
 | `assets-images/` | Downloaded images organized by page (reference copy) |
 | `assets-images-dam.tar.gz` | Images packaged matching AEM DAM paths (upload-ready) |
 | `content-packages/ir-content.zip` | JCR content package (21 pages, 174 XML nodes) |

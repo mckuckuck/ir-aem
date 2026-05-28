@@ -2,14 +2,18 @@ function buildStockTicker() {
   const ticker = document.createElement('div');
   ticker.className = 'hero-stock-ticker';
   ticker.innerHTML = `
-    <div class="ticker-symbol">NYSE: AXP</div>
-    <div class="ticker-price">--</div>
-    <div class="ticker-change">--</div>
-    <div class="ticker-details">
-      <span class="ticker-market-cap"><strong>Market Cap:</strong> --</span>
-      <span class="ticker-volume"><strong>Volume:</strong> --</span>
+    <div class="ticker-header">
+      <span class="ticker-symbol">NYSE: AXP</span>
     </div>
-    <div class="ticker-delay">Price delayed by 20 minutes</div>
+    <div class="ticker-price">--</div>
+    <div class="ticker-change"><span class="ticker-change-value">--</span> | <span class="ticker-change-pct">--</span></div>
+    <div class="ticker-details">
+      <div class="ticker-detail-row"><span class="ticker-label">Market Cap</span><span class="ticker-value">--</span></div>
+      <div class="ticker-detail-row"><span class="ticker-label">Volume</span><span class="ticker-value">--</span></div>
+    </div>
+    <div class="ticker-footer">
+      <div class="ticker-delay">20 minutes minimum delay</div>
+    </div>
   `;
   return ticker;
 }
@@ -57,8 +61,11 @@ function decorateHomeHero(block) {
     block.prepend(bgWrapper);
   }
 
-  // Row 2: logo — inside the title box
-  // Row 3: title (h1) — inside the title box
+  // Left column: logo box + event info
+  const leftCol = document.createElement('div');
+  leftCol.className = 'hero-left';
+
+  // Logo + title in white box
   const titleBox = document.createElement('div');
   titleBox.className = 'hero-title-box';
 
@@ -69,14 +76,18 @@ function decorateHomeHero(block) {
     titleBox.append(logoWrapper);
   }
 
+  const divider = document.createElement('div');
+  divider.className = 'hero-title-divider';
+  titleBox.append(divider);
+
   const title = block.querySelector('h1, h2');
   if (title) {
     titleBox.append(title);
   }
 
-  content.append(titleBox);
+  leftCol.append(titleBox);
 
-  // Row 4: event info — below the title box
+  // Event info — below the title box
   const eventRow = rows.find((row) => {
     const hasHeading = row.querySelector('h1, h2');
     const hasPicture = row.querySelector('picture');
@@ -114,15 +125,17 @@ function decorateHomeHero(block) {
       }
     });
 
-    content.append(eventCard);
+    leftCol.append(eventCard);
   }
 
-  // Stock ticker grid
-  const grid = document.createElement('div');
-  grid.className = 'hero-grid';
+  content.append(leftCol);
+
+  // Right column: stock ticker
+  const rightCol = document.createElement('div');
+  rightCol.className = 'hero-right';
   const ticker = buildStockTicker();
-  grid.append(ticker);
-  content.append(grid);
+  rightCol.append(ticker);
+  content.append(rightCol);
 
   rows.forEach((row) => row.remove());
   block.append(content);
@@ -130,8 +143,11 @@ function decorateHomeHero(block) {
 
 export default function decorate(block) {
   const isHome = block.classList.contains('home');
+  // Also detect home variant by content: if logo image is present (2+ pictures)
+  const hasLogo = block.querySelectorAll('picture').length > 1;
 
-  if (isHome) {
+  if (isHome || hasLogo) {
+    if (!block.classList.contains('home')) block.classList.add('home');
     decorateHomeHero(block);
   } else {
     decorateBaseHero(block);

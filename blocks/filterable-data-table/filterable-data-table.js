@@ -69,6 +69,12 @@ function buildTable(data, columns) {
         a.textContent = col.linkLabel || 'Download';
         a.className = 'fdt-download-link';
         td.append(a);
+      } else if (col.type === 'titled-link' && value) {
+        const a = document.createElement('a');
+        a.href = value;
+        a.textContent = row[col.titleField] || value;
+        a.className = 'fdt-title-link';
+        td.append(a);
       } else if (col.type === 'links') {
         const links = value.split(',').map((l) => l.trim()).filter(Boolean);
         links.forEach((href, i) => {
@@ -141,6 +147,17 @@ function getVariantConfig(variant) {
       filters: ['year'],
     };
   }
+  if (variant === 'news') {
+    return {
+      columns: [
+        { field: 'date', label: 'Date' },
+        {
+          field: 'link', label: 'Title', type: 'titled-link', titleField: 'title',
+        },
+      ],
+      filters: ['year'],
+    };
+  }
   return {
     columns: [
       { field: 'date', label: 'Date' },
@@ -164,6 +181,15 @@ export default async function decorate(block) {
       const valueCell = cells[1];
       const link = valueCell.querySelector('a');
       config[key] = link?.href || valueCell.textContent.trim();
+    } else if (cells.length === 1) {
+      const cell = cells[0];
+      const link = cell.querySelector('a');
+      const text = cell.textContent.trim();
+      if (link) {
+        config.source = link.href;
+      } else if (!config.heading) {
+        config.heading = text;
+      }
     }
   });
 
