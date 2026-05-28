@@ -73,6 +73,16 @@
   text-decoration: underline;
 }
 
+.hero .hero-logo {
+  margin-bottom: 12px;
+}
+
+.hero .hero-logo picture,
+.hero .hero-logo img {
+  height: 48px;
+  width: auto;
+}
+
 /* Hero Home variant */
 .hero.home {
   padding: 48px 24px 56px;

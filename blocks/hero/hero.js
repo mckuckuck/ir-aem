@@ -1,54 +1,3 @@
-function buildEventCard(rows) {
-  const card = document.createElement('div');
-  card.className = 'hero-event-card';
-
-  const eventRows = rows.filter((row) => {
-    const text = row.textContent.trim();
-    return text && !row.querySelector('picture') && !row.querySelector('h1, h2');
-  });
-
-  if (eventRows.length === 0) return null;
-
-  const dateRow = eventRows[0];
-  if (dateRow) {
-    const cells = [...dateRow.children];
-    const dateEl = document.createElement('div');
-    dateEl.className = 'event-date';
-    dateEl.textContent = cells[0]?.textContent?.trim() || '';
-    card.append(dateEl);
-
-    if (cells[1]) {
-      const timeEl = document.createElement('div');
-      timeEl.className = 'event-time';
-      timeEl.textContent = cells[1].textContent.trim();
-      card.append(timeEl);
-    }
-  }
-
-  if (eventRows[1]) {
-    const titleEl = document.createElement('div');
-    titleEl.className = 'event-title';
-    titleEl.textContent = eventRows[1].textContent.trim();
-    card.append(titleEl);
-  }
-
-  if (eventRows[2]) {
-    const links = eventRows[2].querySelectorAll('a');
-    if (links.length > 0) {
-      const linksWrapper = document.createElement('div');
-      linksWrapper.className = 'event-links';
-      links.forEach((link) => {
-        const btn = link.cloneNode(true);
-        btn.className = 'event-link';
-        linksWrapper.append(btn);
-      });
-      card.append(linksWrapper);
-    }
-  }
-
-  return card;
-}
-
 function buildStockTicker(rows) {
   const ticker = document.createElement('div');
   ticker.className = 'hero-stock-ticker';
@@ -144,34 +93,77 @@ function decorateBaseHero(block) {
   block.append(content);
 }
 
+function buildEventFromParagraphs(container) {
+  const paragraphs = container.querySelectorAll('p');
+  if (paragraphs.length === 0) return null;
+
+  const card = document.createElement('div');
+  card.className = 'hero-event-card';
+
+  paragraphs.forEach((p, i) => {
+    const links = p.querySelectorAll('a');
+    if (links.length > 0 && !p.textContent.replace(links[0].textContent, '').trim().match(/\d{4}/)) {
+      const linksWrapper = document.createElement('div');
+      linksWrapper.className = 'event-links';
+      links.forEach((link) => {
+        const btn = link.cloneNode(true);
+        btn.className = 'event-link';
+        linksWrapper.append(btn);
+      });
+      card.append(linksWrapper);
+    } else if (i === 0) {
+      const dateEl = document.createElement('div');
+      dateEl.className = 'event-date';
+      dateEl.textContent = p.textContent.trim();
+      card.append(dateEl);
+    } else {
+      const titleEl = document.createElement('div');
+      titleEl.className = 'event-title';
+      titleEl.textContent = p.textContent.trim();
+      card.append(titleEl);
+    }
+    p.remove();
+  });
+
+  return card;
+}
+
 function decorateHomeHero(block) {
   const rows = [...block.children];
   const content = document.createElement('div');
   content.className = 'hero-content';
 
-  const pic = block.querySelector('picture');
-  if (pic) {
+  const pictures = block.querySelectorAll('picture');
+  if (pictures.length > 0) {
     const bgWrapper = document.createElement('div');
     bgWrapper.className = 'hero-background';
-    bgWrapper.append(pic);
+    bgWrapper.append(pictures[0]);
     block.prepend(bgWrapper);
+  }
+
+  if (pictures.length > 1) {
+    const logoWrapper = document.createElement('div');
+    logoWrapper.className = 'hero-logo';
+    logoWrapper.append(pictures[1]);
+    content.append(logoWrapper);
   }
 
   const title = block.querySelector('h1, h2');
   if (title) {
+    const titleParent = title.parentElement;
     content.append(title);
+
+    const eventCard = buildEventFromParagraphs(titleParent);
+    if (eventCard) content.append(eventCard);
   }
 
   const grid = document.createElement('div');
   grid.className = 'hero-grid';
 
-  const eventCard = buildEventCard(rows);
-  if (eventCard) grid.append(eventCard);
-
   const ticker = buildStockTicker(rows);
   if (ticker) grid.append(ticker);
 
-  content.append(grid);
+  if (grid.children.length > 0) content.append(grid);
 
   rows.forEach((row) => row.remove());
   block.append(content);
