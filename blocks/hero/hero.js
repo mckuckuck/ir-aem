@@ -37,7 +37,17 @@ function decorateBaseHero(block) {
     content.append(breadcrumb);
   }
 
-  const title = block.querySelector('h1, h2');
+  let title = block.querySelector('h1, h2');
+  if (!title) {
+    const textRow = rows.find((row) => {
+      const text = row.textContent.trim();
+      return text && !row.querySelector('picture') && !row.querySelector('ul');
+    });
+    if (textRow) {
+      title = document.createElement('h1');
+      title.textContent = textRow.textContent.trim();
+    }
+  }
   if (title) {
     content.append(title);
   }
