@@ -10,6 +10,31 @@ async function fetchData(source) {
   }
 }
 
+async function fetchNewsFromIndex() {
+  const newsPath = '/news/investor-relations-news/';
+  try {
+    const resp = await fetch('/query-index.json');
+    if (!resp.ok) return [];
+    const json = await resp.json();
+    const entries = json.data || json;
+    return entries
+      .filter((entry) => entry.path && entry.date
+        && entry.path.startsWith(newsPath) && entry.path !== newsPath)
+      .map((entry) => {
+        const ms = entry.date > 9999999999 ? entry.date : entry.date * 1000;
+        const date = new Date(ms).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        return {
+          date,
+          title: entry.title || '',
+          link: entry.path,
+        };
+      })
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  } catch (e) {
+    return [];
+  }
+}
+
 function getUniqueValues(data, field) {
   const values = new Set();
   data.forEach((row) => {
@@ -220,7 +245,7 @@ export default async function decorate(block) {
 
   block.append(wrapper);
 
-  const data = await fetchData(source);
+  const data = variant === 'news' ? await fetchNewsFromIndex() : await fetchData(source);
   let filteredData = [...data];
   const activeFilters = {};
 
