@@ -18,6 +18,50 @@ function buildStockTicker() {
   return ticker;
 }
 
+function buildBreadcrumb() {
+  const path = window.location.pathname.replace(/\/$/, '');
+  if (!path) return null;
+
+  const segments = path.split('/').filter(Boolean);
+  if (segments.length === 0) return null;
+
+  const nav = document.createElement('nav');
+  nav.className = 'hero-breadcrumb';
+  nav.setAttribute('aria-label', 'Breadcrumb');
+
+  const ol = document.createElement('ol');
+
+  const home = document.createElement('li');
+  const homeLink = document.createElement('a');
+  homeLink.href = '/';
+  homeLink.textContent = 'Investor Relations';
+  home.append(homeLink);
+  ol.append(home);
+
+  let href = '';
+  segments.forEach((seg, i) => {
+    href += `/${seg}`;
+    const li = document.createElement('li');
+    const label = seg
+      .replace(/[-]/g, ' ')
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    if (i < segments.length - 1) {
+      const a = document.createElement('a');
+      a.href = href;
+      a.textContent = label;
+      li.append(a);
+    } else {
+      li.textContent = label;
+      li.setAttribute('aria-current', 'page');
+    }
+    ol.append(li);
+  });
+
+  nav.append(ol);
+  return nav;
+}
+
 function decorateBaseHero(block) {
   const rows = [...block.children];
   const content = document.createElement('div');
@@ -31,9 +75,8 @@ function decorateBaseHero(block) {
     block.prepend(bgWrapper);
   }
 
-  const breadcrumb = block.querySelector('ul');
+  const breadcrumb = buildBreadcrumb();
   if (breadcrumb) {
-    breadcrumb.className = 'hero-breadcrumb';
     content.append(breadcrumb);
   }
 
